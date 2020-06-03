@@ -94,8 +94,8 @@ for i in range(100):
          count=count+1
          print('Number of multiples of 12:', count)
 
-#%%
-##  -----------------------------------------------------------------------
+
+##-----------------------------------------------------------------------
 ## Factorial, recursion
 #---------------------------------------------------------------------------
 memo = [0] * 200
@@ -135,7 +135,7 @@ double = list(map(lambda a: a*2, num))   # i am mapping the data by lambda funct
 print('Filtered data   ', evens)
 print("Map data        ",double)
 
-#%%
+#%%---------------------------------------------------
 
 import some_modules
 
@@ -161,7 +161,9 @@ if __name__ == "__main__":
 
 print("Program name is here" + __name__)
 
-#%%
+#%%------------------------------------------------------------------
+#   Class example
+#--------------------------------------------------------------------
 class Computer:
 
     def __init__(self,cpu,ram):
