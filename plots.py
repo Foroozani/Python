@@ -151,6 +151,38 @@ ax.set_ylim3d(0, 3*np.pi);
 ax.set_zlim3d(-np.pi, 2*np.pi);
 
 
+"""
+Plotting 3d
+"""
+
+import matplotlib.pyplot as plt
+import numpy as np
+from mpl_toolkits.mplot3d import Axes3D
+
+x = np.arange(-10, 10, 0.5)
+y = np.arange(-10, 10, 0.5)
+
+# size of x
+#print(x.shape, '\n')
+
+X, Y = np.meshgrid(x, y)
+#print(X)
+
+Z = X **2 + Y**2
+# now let us plot 3d figure
+fig = plt.figure(figsize=(10,8))
+ax = fig.gca(projection = '3d')
+surf = ax.plot_surface(X, Y, Z, cmap= plt.cm.rainbow)
+plt.savefig(fname = "3d.pdf")
+plt.show()
+
+fig = plt.figure(figsize=(12, 8))
+ax = fig.gca(projection='3d')
+surf = ax.plot_surface(X, Y, Z, cmap=plt.cm.rainbow)
+cset = ax.contour(X, Y, Z, zdir='z', offset=0, cmap=plt.cm.rainbow)
+fig.colorbar(surf, shrink=0.5, aspect=5)
+plt.savefig(fname = "3d-both.pdf")
+plt.show()
 
 
 
