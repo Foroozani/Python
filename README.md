@@ -1,4 +1,4 @@
-Some examples of pytrhon code 
+### Python scripts
 
-some examples for plotting and visualization 
+some examples for plotting and visualization with python
 
