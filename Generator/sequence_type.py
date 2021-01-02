@@ -84,21 +84,56 @@ l1_copy = l1[:]
 l1_copy
 
 #------------------------------------------
-# slicing
+# slicing, relies on indexing
 #------------------------------------------
+l = [11, 24, 36, 4, 85, 60, 73, 88, 93]
+s = slice(0,3)
+l[0:3]   #[11, 24, 36]
+s.start, s.stop, s.step # (0, 3, None)
+l[s]    #[11, 24, 36]
+l[0:8:2]
+start = None
+l[start:4]
+l[:5:2]
+l[3:0:-1] # [4, 36, 24] attention: you wont get l[0]in this case
+l[3::-1] # l[3::-1] #
+t = slice(0,100, 2).indices(10)
+t
+range(*t)
+list(range(*t))
+start = 2
+stop = 10
+step = 2
+length = 100
+list(range(*slice(start, stop, step).indices(length))) # it will give you the indexes # [2, 4, 6, 8]
+len(l), l.__len__()
+l[2], l.__getitem__(s), l.__getitem__(slice(None, None, -1))
+
+# Assignments in mutabale sequences
+l = [1, 2, 3, 4, 5, 6, 7, 8]
+l[1:3] = 'python' #[1, 'p', 'y', 't', 'h', 'o', 'n', 4, 5, 6, 7, 8]
+# deletion is just special case of replacement with empty iterebale
+l[2:4] = [] #[1, 2, 5, 6, 7, 8]
+# or even
+l[2:4] = ''  #[1, 2, 5, 6, 7, 8]
+# we can also inseret iterabale to a mutabale sequence
+l[2:2]  #[]
+l[2:2] = 'hello'  #[1, 2, 'h', 'e', 'l', 'l', 'o', 3, 4, 5, 6, 7, 8]
+# extended slices
+l[0:5:2] = 'abc' #['a', 2, 'b', 4, 'c', 6, 7, 8]
 
 
+#----------------------------------------------
+# in place concatenation and repetition
+#----------------------------------------------
 
-
-
-
-
-
-
-
-
-
-
+l1 = [1, 2, 3, 4] # it is a mutabale sequence
+l2 = [5, 6, 7, 8] # it is a mutabale sequence
+id(l1), id(l2)
+l1 = l1 + l2   # regular concatenation
+id(l1)
+l1 += l2
+id(l1)
 
 
 
