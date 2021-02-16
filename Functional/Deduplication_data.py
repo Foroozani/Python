@@ -17,7 +17,6 @@ def dedup_ints(list_of_ints: Tuple[int]) -> Tuple[int]:
     
 def dedup_dicts(list_of_dicts: List[Dict]) -> List[Dict]:
     """Deduplicate a list of dicts.
-
     Two dicts are considered equal if all of their keys and values match.
     """
     # NOTE: I took the data from the test file and wrote down this function
@@ -35,8 +34,6 @@ def dedup_dicts(list_of_dicts: List[Dict]) -> List[Dict]:
         # print(new_l)
         test_out.append((new))
     return test_out
-
-
 
 def dedup_dicts_on_key(list_of_dicts: List[Dict], dedup_on: List[str]) -> List[Dict]:
     """Deduplicate a list of dicts on a subset of keys only.
@@ -66,7 +63,6 @@ def dedup_dicts_on_key(list_of_dicts: List[Dict], dedup_on: List[str]) -> List[D
     return new
 
 #%%
-
 
 if __name__ == "__main__":
     
