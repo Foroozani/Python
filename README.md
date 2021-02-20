@@ -7,3 +7,8 @@ It is a personal note
 
 
 Handy Pycharm Plugins installed: Rainbow Brackets, pycharm cell mode, Monocai Color Them 
+
+
+<p align="center">
+  <img width="460" height="300" src="https://github.com/Foroozani/">
+</p>
