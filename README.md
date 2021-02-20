@@ -5,3 +5,5 @@
 :construction: Keep this repo. upto date with python 3.8  ....
 It is a personal note
 
+
+Handy Pycharm Plugins installed: Rainbow Brackets, pycharm cell mode, Monocai Color Them 
