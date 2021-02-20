@@ -136,4 +136,181 @@ l1 += l2
 id(l1)
 
 
+my_list = [1, 2, 3,4, 5, 6]
+my_list.__getitem__(slice(None, None, -1))  # we can get a slice out of it
+result = [e**2 for e in my_list]
+print(result)
+##
+index = 0
+while True:
+    try:
+        item = my_list.__getitem__(index)
+    except IndexError:
+        break
+    print(item**2)
+    index += 1
+
+##
+class Silly:
+    def __init__(self, n):
+        self.n = n
+
+    def __len__(self):
+       # print('Method __len__ is called')
+        return self.n
+
+    def __getitem__(self, value):
+        print(f'you requested item at {value}')
+        return 'This is a silly element'
+
+silly = Silly(100)
+len(silly)
+silly.__getitem__(200)
+
+
+##
+from functools import lru_cache
+@lru_cache(2**10)
+def fib(n):
+    if n < 2:
+        return 1
+    else:
+        return fib(n-1) + fib(n-2)
+fib(100000)
+
+##
+# create a fibonacci sequence of len n
+class Fib:
+    from functools import lru_cache
+    def __init__(self, n):
+        self.n = n
+
+    def __len__(self):
+        return self.n
+
+    def __getitem__(self, s):
+        if isinstance(s, int):
+            if s < 0:
+                s = self.n + s
+            if s < 0 or s >= self.n:
+                raise IndexError
+            else:
+                return Fib._fib(s)
+    @staticmethod
+    @lru_cache(2 ** 10)
+    def _fib(n):
+        if n < 2:
+            return 1
+        else:
+            return Fib._fib(n - 1) + Fib._fib(n - 2)
+##
+fib = Fib(10)
+fib[3], fib[9], fib[-2], fib[0:4]  # get item from a list
+
+##
+class Fib:
+    from functools import lru_cache
+    def __init__(self, n):
+        self.n = n
+
+    def __len__(self):
+        return self.n
+
+    def __getitem__(self, s):
+        if isinstance(s, int):  # s: the element of given index
+            if s < 0:
+                s = self.n + s
+            if s < 0 or s >= self.n:
+                raise IndexError
+            else:
+                return Fib._fib(s)
+        else:    # in case of list
+            start, stop, step = s.indices(self.n)
+            rng = range(start, stop, step)
+            return [Fib._fib(i) for i in rng]
+
+    @staticmethod
+    @lru_cache(2 ** 10)
+    def _fib(n):
+        if n < 2:
+            return 1
+        else:
+            return Fib._fib(n - 1) + Fib._fib(n - 2)
+obj = Fib(20)
+print(list(obj))
+obj.__getitem__(-15)
+obj[0:3]
+obj.__getitem__(8)
+##
+class Myclass:
+    def __init__(self, name):
+        self.name = name
+
+    def __repr__(self):
+        """It return repr(self)"""
+        return f'-----> {self.name}'
+
+    def __add__(self, other):
+        return Myclass(self.name + other.name)
+        # MYCLASS will just call the __repr__
+
+    def __mul__(self, n):
+        return (self.name * n)
+
+    def __rmul__(self, n):
+        return Myclass(n * self.name)
+
+    def __imul__(self, n):
+        self.name *= n
+        return self
+
+    def __contains__(self, item):
+        return item in self.name
+
+
+##
+c1 = Myclass('obj1')
+c2 = Myclass('obj2')
+
+c1.__add__(c2)
+c1 + c2
+c3 = Myclass(4)
+c4 = Myclass(5)
+c3 + c4
+result = c1 * 2
+print(result)
+c1.__mul__(3)
+c1 *= 10
+7 * c1
+'j' in c1
+l = [1, 2, 3, 4, 5, 6]
+5 in l
+##
+# ---------------------------------------------------------
+# custom sequence (part 2)
+#----------------------------------------------------------
+import numbers
+class Point:
+    def __init__(self, x, y):
+        if isinstance(x, numbers.Real) and isinstance(y, numbers.Real):
+            self._pt=(x, y)
+        else:
+            raise TypeError('ATT: Point coordinates must be real number')
+
+    def __repr__(self, *args, **kwargs):
+        return f'Point(x={self._pt[0]}, y={self._pt[1]})'
+
+    def __len__(self):
+        return len(self._pt)
+
+    def __getitem__(self, item):
+        return self._pt[item]
+
+
+pt =Point(3,8)
+pt
+x, y = pt
+x
+y
+
 
