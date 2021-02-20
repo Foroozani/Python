@@ -10,5 +10,5 @@ Handy Pycharm Plugins installed: Rainbow Brackets, pycharm cell mode, Monocai Co
 
 
 <p align="center">
-  <img width="460" height="300" src="https://github.com/Foroozani/">
+  <img width="860" height="300" src="https://github.com/Foroozani/Python/blob/master/img/Pycharm_costomized.png">
 </p>
