@@ -178,5 +178,14 @@ with open('cars.csv') as file:
         data = cast_row(data_types, data)
         car = Car(*data)
         cars.append(car)
-
 ##
+# simply skip 2 lines, we read the file line by line, dont need to load it
+# in memory all at once
+origins = set()
+with open(file_name) as f:
+    next(f)
+    next(f)
+    for row in f:
+        origin = row.strip('\n').split(';')[-1]
+        origins.add(origin)
+print(origins)
