@@ -8,3 +8,7 @@ Modules of:
 6. context managers
 7. generator based coroutines
 
+
+<p align="center">
+  <img width="460" height="300" src="https://github.com/Foroozani/Python/blob/master/Generator/project1_part2.png">
+</p>
