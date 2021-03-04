@@ -258,3 +258,59 @@ def violation_counts_by_make():
                                     key=lambda t: t[1],
                                     reverse=True)
             }
+
+
+# GROUP BY ---------------------------------------------------------
+
+# grouping
+from collections import defaultdict
+import itertools
+
+filename = "/home/najmeh/PycharmProjects/pythonProject/deepdive2/part2/groupingby/cars_2014.csv"
+#just open the file and print some line
+with open(filename) as f:
+    for row in itertools.islice(f, 0, 20):
+        print(row. strip('\n'))
+#_____________ an example________________
+"""Dictionaries are a convenient way to store data for later retrieval 
+by name (key). Keys must be unique, immutable objects, and are typically 
+strings. The values in a dictionary can be anything. For many applications
+ the values are simple types such as integers and strings."""
+somedict = {}
+print(somedict[3]) # KeyError
+
+someddict = defaultdict(int)
+print(someddict[3])
+
+name = 'Pythonisawesome'
+
+d = defaultdict(int)
+for value in name:
+    d[value] += 1
+
+from pprint import pprint
+pprint(d)
+#---------------------------------------
+# create an instance of defaultdic() function
+makes = defaultdict(int)
+
+with open(filename) as f:
+    next(f)    # skip first row
+    for row in f:
+        key, value = row.strip('\n').split(',')
+        makes[key] += 1
+
+for key, value in makes.items():
+    pprint(f'{key}: {value}')
+
+makes['BMW']
+
+#Instead of doing all this, we could use the groupby function in itertools.
+with open(filename) as f:
+    next(f)  # skip header row
+    make_groups = itertools.groupby(f, key=lambda x: x.split(',')[0])
+    make_counts = ((key, sum(1 for model in models))
+                    for key, models in make_groups)
+    pprint(list(make_counts))
+
+
