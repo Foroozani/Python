@@ -12,3 +12,6 @@ Handy Pycharm Plugins installed: Rainbow Brackets, pycharm cell mode, Monocai Co
 <p align="center">
   <img width="1000" height="500" src="https://github.com/Foroozani/Python/blob/master/img/Pycharm_costomized.png">
 </p>
+
+[Variable Explorer in Jupyter Notebook](https://stackoverflow.com/questions/37718907/variable-explorer-in-jupyter-notebook)
+
