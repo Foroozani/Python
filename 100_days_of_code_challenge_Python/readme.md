@@ -1,5 +1,4 @@
 
-Topics divided into:
 - Strings
 
 - Lists and Tuples
